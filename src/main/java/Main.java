@@ -13,6 +13,7 @@ public class Main {
       System.out.println("3. Szukaj studenta");
       System.out.println("4. Usuń studenta");
       System.out.println("5. Sortuj studentów");
+      System.out.println("6. Aktualizuj wiek studenta");
       System.out.println("0. Wyjście");
       System.out.print("Wybór: ");
 

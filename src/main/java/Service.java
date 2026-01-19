@@ -56,6 +56,15 @@ public class Service {
         return students;
     }
 
+    public void updateStudentAge(String name, int newAge) throws IOException {
+        ArrayList<Student> students = getStudents();
+        for (Student s : students)
+            if (s.getName().equalsIgnoreCase(name))
+                s.setAge(newAge);
+        saveAll(students);
+        System.out.println("Wiek studenta " + name + " został zaktualizowany na " + newAge);
+    }
+
     private void saveAll(ArrayList<Student> students) throws IOException {
         BufferedWriter b = new BufferedWriter(new FileWriter(FILE, false));
         for (Student s : students) {

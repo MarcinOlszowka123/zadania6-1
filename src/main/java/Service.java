@@ -56,14 +56,29 @@ public class Service {
         return students;
     }
 
-    public void updateStudentAge(String name, int newAge) throws IOException {
-        ArrayList<Student> students = getStudents();
-        for (Student s : students)
-            if (s.getName().equalsIgnoreCase(name))
-                s.setAge(newAge);
-        saveAll(students);
-        System.out.println("Wiek studenta " + name + " został zaktualizowany na " + newAge);
-    }
+        public void updateStudentAge(String name, int newAge) throws IOException {
+            ArrayList<Student> students = getStudents();
+            boolean found = false;
+
+            for (int i = 0; i < students.size(); i++) {
+                Student s = students.get(i);
+                if (s.getName().equalsIgnoreCase(name)) {
+                    Student updated = new Student(s.getName(), newAge, s.getBirthDate());
+                    students.set(i, updated);
+                     System.out.println("Zaktualizowano wiek studenta: " + s);
+                     System.out.println("Nowy wiek studenta: " + newAge);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
+                saveAll(students);
+            } else {
+                throw new IOException("Nie znaleziono studenta");
+            }
+        }
+
 
     private void saveAll(ArrayList<Student> students) throws IOException {
         BufferedWriter b = new BufferedWriter(new FileWriter(FILE, false));

@@ -65,13 +65,21 @@ public class Main {
             }
             break;
 
-          case 6:
-            System.out.print("Podaj imię studenta do aktualizacji: ");
-            String updateage = sc.nextLine();
-            Student studentToUpdate = s.findStudentByName(updateage);
-            if (studentToUpdate != null)
-              System.out.println("Znaleziono studenta: " + studentToUpdate);
+            case 6:{
+            System.out.print("Podaj imię studenta: ");
+            String nameToUpdate = sc.nextLine();
+
+            System.out.print("Podaj nowy wiek: ");
+            int newAge = sc.nextInt();
+            sc.nextLine();
+
+            s.updateStudentAge(nameToUpdate, newAge);
+            System.out.println("Wiek został zaktualizowany");
+           
+
+            }
             break;
+
           case 0:
             System.out.println("Koniec programu");
             return;

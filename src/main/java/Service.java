@@ -18,7 +18,8 @@ public class Service {
     public ArrayList<Student> getStudents() throws IOException {
         ArrayList<Student> ret = new ArrayList<Student>();
         File file = new File(FILE);
-        if (!file.exists()) return ret;
+        if (!file.exists())
+            return ret;
 
         BufferedReader reader = new BufferedReader(new FileReader(FILE));
         String line;
@@ -28,6 +29,7 @@ public class Service {
         reader.close();
         return ret;
     }
+
     public Student findStudentByName(String name) throws IOException {
         for (Student s : getStudents()) {
             if (s.getName().equalsIgnoreCase(name)) {
@@ -37,12 +39,10 @@ public class Service {
         return null;
     }
 
-   
     public boolean deleteStudentByName(String name) throws IOException {
         ArrayList<Student> students = getStudents();
         boolean removed = students.removeIf(
-            s -> s.getName().equalsIgnoreCase(name)
-        );
+                s -> s.getName().equalsIgnoreCase(name));
 
         if (removed) {
             saveAll(students);

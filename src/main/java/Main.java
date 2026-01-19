@@ -50,7 +50,7 @@ public class Main {
             break;
 
           case 4:
-            System.out.print("Podaj imię do usunięcia: ");
+            System.out.print("kogo mam usunąć z listy studentów (imie): ");
             String del = sc.nextLine();
             System.out.println(
                 s.deleteStudentByName(del)
@@ -65,14 +65,14 @@ public class Main {
             break;
 
           case 0:
-            System.out.println("Koniec");
+            System.out.println("Koniec programu");
             return;
 
           default:
             System.out.println("Zły wybór");
         }
       } catch (IOException e) {
-        System.out.println("Błąd IO: " + e.getMessage());
+        System.out.println("Błąd: " + e.getMessage());
       }
     }
   }

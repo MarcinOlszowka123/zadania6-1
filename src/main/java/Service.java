@@ -1,8 +1,7 @@
-import java.util.Collection;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.io.*;
 
 public class Service {
 
@@ -60,11 +59,10 @@ public class Service {
             ArrayList<Student> students = getStudents();
             boolean found = false;
 
-            for (int i = 0; i < students.size(); i++) {
-                Student s = students.get(i);
+            for (Student s : students) {
                 if (s.getName().equalsIgnoreCase(name)) {
-                    Student updated = new Student(s.getName(), newAge, s.getBirthDate());
-                    students.set(i, updated);
+                    s = new Student(s.getName(), newAge, s.getBirthDate());
+                    students.set(students.indexOf(s), s);
                      System.out.println("Zaktualizowano wiek studenta: " + s);
                      System.out.println("Nowy wiek studenta: " + newAge);
                     found = true;
